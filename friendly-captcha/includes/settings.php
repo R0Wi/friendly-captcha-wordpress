@@ -147,6 +147,16 @@ if (is_admin()) {
             FriendlyCaptcha_Plugin::$option_group,
             FriendlyCaptcha_Plugin::$option_global_puzzle_endpoint_active_name
         );
+        
+        /*URL overwrites*/
+        register_setting(
+            FriendlyCaptcha_Plugin::$option_group,
+            FriendlyCaptcha_Plugin::$option_global_puzzle_endpoint_overwrite_name
+        );
+        register_setting(
+            FriendlyCaptcha_Plugin::$option_group,
+            FriendlyCaptcha_Plugin::$option_global_verify_endpoint_overwrite_name
+        );
 
         /* General section */
 
@@ -593,6 +603,40 @@ if (is_admin()) {
                 "option_name" => FriendlyCaptcha_Plugin::$option_eu_puzzle_endpoint_active_name,
                 "description" => "Enable the dedicated EU endpoint service, see the <a href=\"https://docs.friendlycaptcha.com/#/eu_endpoint\">documentation</a> for more details.",
                 "type" => "checkbox"
+            )
+        );
+
+        /* URL overwrites section */
+
+        // Section
+        add_settings_section(
+            'frcaptcha_url_settings_section',
+            'URL Overwrite Settings (optional)',
+            NULL,
+            'friendly_captcha_admin'
+        );
+
+        add_settings_field(
+            'frcaptcha_settings_puzzle_endpoint_overwrite_field',
+            'Puzzle endpoint overwrite', 'frcaptcha_settings_field_callback',
+            'friendly_captcha_admin',
+            'frcaptcha_url_settings_section',
+            array(
+                "option_name" => FriendlyCaptcha_Plugin::$option_global_puzzle_endpoint_overwrite_name,
+                "description" => "Overwrite the puzzle endpoint URL. Takes precedence over the above settings.",
+                "type" => "text"
+            )
+        );
+
+        add_settings_field(
+            'frcaptcha_settings_verify_endpoint_overwrite_field',
+            'Verify endpoint overwrite', 'frcaptcha_settings_field_callback',
+            'friendly_captcha_admin',
+            'frcaptcha_url_settings_section',
+            array(
+                "option_name" => FriendlyCaptcha_Plugin::$option_global_verify_endpoint_overwrite_name,
+                "description" => "Overwrite the verify endpoint URL.",
+                "type" => "text"
             )
         );
     }

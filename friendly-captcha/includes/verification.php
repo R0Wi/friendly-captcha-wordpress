@@ -1,8 +1,9 @@
 <?php
 
 
-function frcaptcha_verify_captcha_solution($solution, $sitekey, $api_key) {
-        $endpoint = 'https://api.friendlycaptcha.com/api/v1/siteverify';
+function frcaptcha_verify_captcha_solution($solution, $sitekey, $api_key, $verify_endpoint_overwrite) {
+        // Allow overriding the endpoint via settings page
+        $endpoint = $verify_endpoint_overwrite ? $verify_endpoint_overwrite : 'https://api.friendlycaptcha.com/api/v1/siteverify';
 
         $response_body = array(
             'secret' => $api_key,

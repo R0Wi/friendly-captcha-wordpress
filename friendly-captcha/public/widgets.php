@@ -74,6 +74,12 @@ function frcaptcha_generate_widget_tag_from_plugin($plugin) {
         $extra_attributes = "data-puzzle-endpoint=\"https://eu-api.friendlycaptcha.eu/api/v1/puzzle\"";
     }
 
+    // Puzzle endpoint overwrite takes precedence
+    $puzzle_endpoint_overwrite = $plugin->get_global_puzzle_endpoint_overwrite();
+    if ($puzzle_endpoint_overwrite) {
+        $extra_attributes = "data-puzzle-endpoint=\"" . $puzzle_endpoint_overwrite . "\"";
+    }
+
     $theme = $plugin->get_widget_dark_theme_active() ? "dark" : "";
 
     return sprintf(

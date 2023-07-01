@@ -30,7 +30,7 @@ function frcaptcha_forminator_verify( $can_show, $id, $form_settings ) {
 		];
 	}
 	
-	$verification = frcaptcha_verify_captcha_solution($solution, $plugin->get_sitekey(), $plugin->get_api_key());
+	$verification = frcaptcha_verify_captcha_solution($solution, $plugin->get_sitekey(), $plugin->get_api_key(), $plugin->get_global_verify_endpoint_overwrite());
 	if (!$verification["success"]) {
         return [
 			'can_submit' => false,

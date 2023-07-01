@@ -61,6 +61,8 @@
         public static $option_global_puzzle_endpoint_active_name = "frcaptcha_global_endpoint_active";
         public static $option_eu_puzzle_endpoint_active_name = "frcaptcha_eu_endpoint_active";
         
+        public static $option_global_puzzle_endpoint_overwrite_name = "frcaptcha_global_puzzle_endpoint_overwrite";
+        public static $option_global_verify_endpoint_overwrite_name = "frcaptcha_global_verify_endpoint_overwrite";
 
         public function init() {
             if ( defined( 'FRIENDLY_CAPTCHA_VERSION' ) ) {
@@ -236,6 +238,16 @@
             if (!$eu_active) return true; // At least one must be enabled.
 
             return get_option(FriendlyCaptcha_Plugin::$option_global_puzzle_endpoint_active_name) == 1;
+        }
+
+        /* URL overwrite settings */
+
+        public function get_global_puzzle_endpoint_overwrite() {
+            return get_option(FriendlyCaptcha_Plugin::$option_global_puzzle_endpoint_overwrite_name);
+        }
+
+        public function get_global_verify_endpoint_overwrite() {
+            return get_option(FriendlyCaptcha_Plugin::$option_global_verify_endpoint_overwrite_name);
         }
     }
 

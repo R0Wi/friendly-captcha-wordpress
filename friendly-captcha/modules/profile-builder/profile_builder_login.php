@@ -31,7 +31,7 @@ function frcaptcha_pb_login_validate($user){
             remove_filter('authenticate', 'wp_authenticate_email_password', 20, 3);
         }
 
-        $verification = frcaptcha_verify_captcha_solution($solution, $plugin->get_sitekey(), $plugin->get_api_key());
+        $verification = frcaptcha_verify_captcha_solution($solution, $plugin->get_sitekey(), $plugin->get_api_key(), $plugin->get_global_verify_endpoint_overwrite());
 
         if (!$verification['success']) {
             $user = new WP_Error('wppb_recaptcha_error', FriendlyCaptcha_Plugin::default_error_user_message());

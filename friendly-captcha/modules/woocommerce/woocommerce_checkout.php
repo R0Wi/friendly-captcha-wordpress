@@ -37,7 +37,7 @@ function frcaptcha_wc_checkout_validate() {
         wc_add_notice( $error_message, 'error' );
     }
 
-    $verification = frcaptcha_verify_captcha_solution($solution, $plugin->get_sitekey(), $plugin->get_api_key());
+    $verification = frcaptcha_verify_captcha_solution($solution, $plugin->get_sitekey(), $plugin->get_api_key(), $plugin->get_global_verify_endpoint_overwrite());
 
     if (!$verification['success']) {
         $error_message = $errorPrefix . FriendlyCaptcha_Plugin::default_error_user_message();

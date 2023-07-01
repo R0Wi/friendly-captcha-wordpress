@@ -28,7 +28,7 @@ function frcaptcha_pb_reset_password_sent_message($message) {
         $message = 'wppb_recaptcha_error';
     }
 
-    $verification = frcaptcha_verify_captcha_solution($solution, $plugin->get_sitekey(), $plugin->get_api_key());
+    $verification = frcaptcha_verify_captcha_solution($solution, $plugin->get_sitekey(), $plugin->get_api_key(), $plugin->get_global_verify_endpoint_overwrite());
 
     if (!$verification['success']) {
         $message = 'wppb_recaptcha_error';
