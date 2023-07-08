@@ -12,7 +12,6 @@
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: frcaptcha
  * Domain Path: /languages
- * GitHub Plugin URI: https://github.com/R0Wi/friendly-captcha-wordpress
  */
 
 // If this file is called directly, abort.
